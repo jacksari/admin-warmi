@@ -1,17 +1,14 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { HomeComponent } from "./home/home.component";
 import { RouterModule, Routes } from "@angular/router";
-import { TranslateModule } from "@ngx-translate/core";
-
-import { CoreCommonModule } from "@core/common.module";
-
+import { CreateComponent } from "./create/create.component";
 import { ContentHeaderModule } from "app/layout/components/content-header/content-header.module";
-
-import { SampleComponent } from "./sample.component";
-import { HomeComponent } from "./home.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "usuarios",
     data: { animation: "home" },
     children: [
       {
@@ -20,22 +17,24 @@ const routes: Routes = [
         data: { animation: "home" },
       },
       {
-        path: "sample",
-        component: SampleComponent,
-        data: { animation: "sample" },
+        path: "crear",
+        component: CreateComponent,
+        data: { animation: "create" },
+      },
+      {
+        path: "**",
+        redirectTo: "home",
       },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [SampleComponent, HomeComponent],
+  declarations: [HomeComponent, CreateComponent],
   imports: [
     RouterModule.forChild(routes),
     ContentHeaderModule,
     TranslateModule,
-    CoreCommonModule,
   ],
-  exports: [SampleComponent, HomeComponent],
 })
-export class SampleModule {}
+export class UsersModule {}

@@ -10,7 +10,9 @@ export class UserService {
    *
    * @param {HttpClient} _http
    */
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) {
+    console.log('init service user');
+  }
 
   /**
    * Get all users
